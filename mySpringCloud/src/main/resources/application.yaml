@@ -1,0 +1,17 @@
+#server:
+#  port: 8081
+#user:
+#  name: nacos-config-yaml
+#  age: 68
+#spring:
+#  application:
+#    name: nacos-provider
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 106.55.60.108:8848
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: *
