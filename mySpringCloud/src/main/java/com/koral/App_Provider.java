@@ -18,7 +18,9 @@ public class App_Provider {
             //When configurations are refreshed dynamically, they will be updated in the Enviroment, therefore here we retrieve configurations from Environment every other second.
             String userName = environment.getProperty("user.name");
             String userAge = environment.getProperty("user.age");
-            System.err.println("user name :" + userName + "; age: " + userAge);
+            //Get the current deployment environment
+            String currentEnv =environment.getProperty("current.env");
+            System.err.println("in "+currentEnv+" enviroment; "+"user name :" + userName + "; age: " + userAge);
             TimeUnit.SECONDS.sleep(1);
         }
     }
