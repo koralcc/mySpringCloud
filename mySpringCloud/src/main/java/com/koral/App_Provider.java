@@ -20,7 +20,10 @@ public class App_Provider {
             String userAge = environment.getProperty("user.age");
             //Get the current deployment environment
             String currentEnv =environment.getProperty("current.env");
-            System.err.println("in "+currentEnv+" enviroment; "+"user name :" + userName + "; age: " + userAge);
+            //读取ext配置文件
+            String common0name = environment.getProperty("common.name");
+            String common0age = environment.getProperty("common.age");
+            System.err.println("in "+currentEnv+" enviroment; "+"user name :" + userName + "; age: " + userAge + "commonName:"+common0name +"common0age:"+common0age);
             TimeUnit.SECONDS.sleep(1);
         }
     }
