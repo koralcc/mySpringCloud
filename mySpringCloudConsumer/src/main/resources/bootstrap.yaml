@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 106.55.60.108:8848
+
+    # sentinel设置
+    # 这个端口是用来开启一个http服务，来跟sentinel dashboard做关联的
+    #The port number specified in will start an HTTP Server on the corresponding server of the application, and this server will interact with the Sentinel dashboard.
+    sentinel:
+      transport:
+        port: 8720
+        dashboard: 106.55.60.108:8858
+  main:
+    allow-circular-references: true
+
+feign:
+  sentinel:
+    # 配置feign对sentinel的支持
+    enabled: true
+
