@@ -1,11 +1,9 @@
 package com.koral.consumer.controller;
 
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.koral.api.EchoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 @RestController
@@ -60,21 +57,9 @@ public class NacosConsumerAppController {
 //        String uri = "http://nacos-provider/echo/" + appName;
 //        System.out.println("uri:"+uri);
 //        return restTemplate.getForObject(uri + appName, String.class);
-        CountDownLatch countDownLatch = new CountDownLatch(20);
-        for (int i = 0; i < 20; i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String ret = echoService.echo("限流测试");
-                    System.out.println("返回："+ret);
-                    countDownLatch.countDown();
-                    System.out.println("执行完毕");
-                }
-            }).start();
 
-        }
-        countDownLatch.await();
-        return "ret执行完毕";
+        return echoService.echo("hello");
+
 
     }
 
